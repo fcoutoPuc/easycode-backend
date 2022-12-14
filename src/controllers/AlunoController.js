@@ -142,10 +142,15 @@ module.exports = {
     },
 
     async createTrajetoByAluno(req, res) {
+
+        const date = new Date();
+        let created_at = `${date.getFullYear()}-${date.getMonth() + 1 }-${date.getDate()}`
+
         const { aluno_email, trajeto_id } = req.body;
         await connection('aluno_has_trajeto').insert({
             aluno_email,
             trajeto_id,
+            created_at
         });
         return res.status(201).send('');
     },

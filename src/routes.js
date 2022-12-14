@@ -5,6 +5,8 @@ const AlunoController = require('./controllers/AlunoController');
 const TopicoController = require('./controllers/TopicoController');
 const TrajetoController = require('./controllers/TrajetoController');
 const MaterialCursoController = require('./controllers/MaterialCursoController');
+const IndicadoresController = require('./controllers/IndicadoresController');
+const PerguntaController = require('./controllers/PerguntaController');
 const routes = express.Router();
 
 routes.post('/curso', CursoController.create);
@@ -42,5 +44,13 @@ routes.post('/material-curso', MaterialCursoController.create);
 routes.get('/material-curso', MaterialCursoController.getAll);
 
 routes.get('/material-curso/:id', MaterialCursoController.getById);
+
+routes.get('/indicadores', IndicadoresController.gerarIndicadores);
+
+
+routes.post('/pergunta/new', PerguntaController.createPergunta);
+routes.post('/pergunta/curso', PerguntaController.associarPerguntasAoCurso);
+routes.get('/pergunta', PerguntaController.getAll);
+routes.get('/perguntas/curso/:cursoId', PerguntaController.getPerguntasDoCurso);
 
 module.exports = routes

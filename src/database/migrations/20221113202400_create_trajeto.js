@@ -7,7 +7,7 @@ exports.up = function (knex) {
         table.string('dificuldade').notNullable();
         table.string('descricao').notNullable();
         table.foreign('topico_nome').references('nome').inTable('topico');
-        
+        table.timestamp('created_at');
     })
 };
 

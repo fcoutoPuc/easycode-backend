@@ -6,6 +6,7 @@ exports.up = function (knex) {
     table.primary(['aluno_email', 'curso_id'])
     table.foreign('aluno_email').references('email').inTable('aluno');
     table.foreign('curso_id').references('id').inTable('curso');
+    table.timestamp('created_at');
   })
 };
 

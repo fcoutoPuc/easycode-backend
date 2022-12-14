@@ -20,7 +20,8 @@ module.exports = {
     async create2(req, res) {
         const { nome, autor,topico_nome, cursos, dificuldade, descricao } = req.body;
         const id = crypto.randomBytes(4).toString('HEX');
-        
+        const date = new Date();
+        let created_at = `${date.getFullYear()}-${date.getMonth() + 1 }-${date.getDate()}`
 
         await connection('trajeto').insert({
             id,
@@ -28,7 +29,8 @@ module.exports = {
             autor,
             topico_nome,
             dificuldade,
-            descricao
+            descricao,
+            created_at
         });
         for (const eachCurso of cursos) {
             await connection('trajeto_has_curso').insert({

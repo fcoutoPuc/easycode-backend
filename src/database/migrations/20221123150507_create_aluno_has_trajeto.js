@@ -4,6 +4,7 @@ exports.up = function(knex) {
         table.string('trajeto_id');
         table.boolean('finalizado').defaultTo(false);
         table.primary(['aluno_email', 'trajeto_id']);
+        table.timestamp('created_at');
     })
 };
 

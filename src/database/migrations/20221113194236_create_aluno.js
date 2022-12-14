@@ -5,6 +5,7 @@
         table.string('nome').notNullable();
         table.string('telefone').notNullable();
         table.string('senha').notNullable();
+        table.timestamp('created_at').defaultTo(knex.fn.now());
     })
   };
   

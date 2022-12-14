@@ -6,6 +6,7 @@ exports.up = function (knex) {
         table.integer('ordem').notNullable();
         table.string('curso_id').notNullable();
         table.foreign('curso_id').references('id').inTable('curso');
+        table.timestamp('created_at').defaultTo(knex.fn.now());
     });
 };
 

@@ -7,6 +7,7 @@ exports.up = function(knex) {
         
         table.foreign('trajeto_id').references('id').inTable('trajeto')
         table.foreign('curso_id').references('id').inTable('curso')
+        table.timestamp('created_at').defaultTo(knex.fn.now());
     })
 };
 exports.down = function(knex) {

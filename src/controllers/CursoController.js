@@ -11,15 +11,18 @@ async function buidResponse(response, materialCurso) {
 module.exports = {
 
     async create(req, res) {
+        const date = new Date();
         const { nome, dificuldade, topico_nome, material_curso, descricao } = req.body;
         const id = crypto.randomBytes(4).toString('HEX');
+        let created_at = `${date.getFullYear()}-${date.getMonth() + 1 }-${date.getDate()}`
         try {
             await connection('curso').insert({
                 id,
                 nome,
                 dificuldade,
                 topico_nome,
-                descricao
+                descricao,
+                created_at
             });
         } catch (e) {
             console.log(e);
